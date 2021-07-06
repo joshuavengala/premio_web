@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>'
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+    /*change these */
+    #primary-color {
+      #6C63FF   
+    }
+    #secondary-color {
+      #3AD29F
+    }
+    #third-color {
+      #F55F44
+    }
+
+    /* leave these */
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+
+    }
+    .app-bar {
+      width: 100vw;
+      height: 15vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 999;
+      position: fixed;
+      bottom: 0;
+    }
+    .app-btn {
+      width: 14vw;
+      height: 14vw;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .button-icon {
+      width: 50%;
+      opacity: 69%;
+    }
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .award-div {
+      display: flex;
+      width: 80vw;
+      height: 20vh;
+      border-radius: 29%;
+      margin-top: 5vh;
+      
+    }
+
+    .award-info-holder {
+      width: 60%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .svg-holder {
+      width: 40%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+    .svg-trophy {
+      width: 65%;
+      height: 65%;
+    }
+    .award-title {
+      font-size: 7vw;
+      margin-top: 3vh;
+    }
+    .qr-holder {
+      width: 60vw;
+      height: 60vw;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 12.5%;
+      margin-top: 6vh;
+    }
+    .qr-code {
+      width: 100%;
+      border-radius: 12.5%;
+    }
+    .page-title {
+      color: white;
+      font-size: 3.4vh;
+    }
+    .trophy-logo {
+      z-index: 999;
+      height: 6.5vw;
+      position: relative;
+      right: 42%;
+      bottom: 15%;
+   }
+   .settings-svg {
+     width: 70vw;
+   }
+   .settings-buttons {
+     margin-top: 7vh;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     width: 100vw;
+     height: 50vh;
+   }
+   .settings-div-button {
+     margin-top: 5vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 80vw;
+     height: 6vh;
+     border-radius: 13.5%;
+   }
+   .settings-div-button > p {
+     color: white;
+     font-size: 2vh;
+   }
+   .referral-svg {
+     width: 100vw;
+     margin-right: 6vw;
+   }
+   .gift-logo-overlay {
+     position: absolute;
+     z-index: 999;
+     top: 27vh;
+     right: 43vw;
+     width: 12vw;
+   }
+   .caption-holder {
+     display: flex;
+     flex-direction: column;
+     width: 100vw;
+     height: 12vh;
+     align-items: center;
+     margin-top: 5vh;
+   }
+   .referral-description {
+     color: #8E8E8E;
+     font-size: 1.8vh;
+     width: 70vw;
+     height: 10vh;
+     text-align: center;
+   }
+   .spaced-down {
+     margin-top: 10vh;
+   }
+   .sr-div {
+     width: 17vw;
+     height: 5vh;
+     border-radius: 13.5%;
+     background-color: #535461;
+   }
+   .sr-row {
+     width: 50vw;
+     height: 5vh;
+     display: flex;
+     justify-content: space-between;
+     margin-top: 5vh;
+     
+   }
+   .recent-txs-div {
+     width: 70vw;
+     background-color: #535461;
+     height: 20vh;
+     border-radius: 8.5%;
+     margin-top: 6vh;
+   }
+   .copied-ref {
+     width: 70vw;
+     height: 15vh;
+     background-color: #242424;
+   }
+   .copied-ref > div {
+   }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+  </div>
+  <div class="app-bar">
+    <div class="app-btn" id="home-btn" onclick="createHome();">
+      <img src="Icon awesome-home.svg" alt="" class="button-icon">
+    </div>
+    <div class="app-btn" id="gift-btn" onclick="createReferralPage();">
+      <img src="Icon awesome-gift.svg" alt="" class="button-icon">
+    </div>
+    <div class="app-btn" id="send-btn" onclick="createSendPage();">
+      <img src="Icon ionic-ios-send.svg" alt="" class="button-icon">
+    </div>
+    <div class="app-btn" id="trophy-btn" onclick="createRewardsPage();">
+      <img src="Icon awesome-trophy.svg" alt="" class="button-icon">
+    </div>
+    <div class="app-btn" id="settings-btn" onclick="createSettingsPage();">
+      <img src="Icon ionic-md-settings.svg" alt="" class="button-icon">
+    </div>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.all.min.js" integrity="sha256-/A5TntSW7qgHFs6AcLw31t3ExTWuFBXgBAIkUZqX6o0=" crossorigin="anonymous"></script>    
+<script src="config.js"></script>
+<script>
+  // change this to false if you want a light theme
+  const darkMode = true;
+  if(darkMode) {
+    document.querySelectorAll(".app-btn").forEach(
+      (element) => {
+        element.setAttribute("style", "background-color: #535461;");
+      }
+    );
+    document.querySelector("body").setAttribute("style", "background-color: #242424;");
+  }
+
+
+  const showBtnPressed = function(buttonId) {
+    if(darkMode) {
+      var appBarChildren = document.querySelector(".app-bar").children;
+      for(var i = 0; i < appBarChildren.length; i++) {
+        appBarChildren[i].setAttribute("style", "background-color: #535461;");
+      }
+      document.querySelector(`#${buttonId}`).setAttribute("style", "background-color: #28282F;");
+    }
+    document.querySelector(".main-container").innerHTML="";
+  }
+
+  const createTrophySvg = function(trophyColor) {
+    return `<svg class="svg-trophy" xmlns="http://www.w3.org/2000/svg" width="80.22" height="91.569" viewBox="0 0 80.22 91.569">
+  <path id="Path_163" data-name="Path 163" d="M668.066,372.81l-.145,1.948a40.511,40.511,0,0,1-4.257,13.924,39.513,39.513,0,0,1-21.187,19.158q-1.376.544-2.857,1.016l-1.1-3.456a40.417,40.417,0,0,0,7.941-3.474,35.147,35.147,0,0,0,13.9-14.756,39.638,39.638,0,0,0,3.648-10.732H650.635V372.81Z" transform="translate(-587.898 -366.802)" fill="${trophyColor}"/>
+  <path id="Path_164" data-name="Path 164" d="M644.751,407.858A39.5,39.5,0,0,0,665.935,388.7a40.426,40.426,0,0,0,4.257-13.924l.145-1.948h1.494l-.145,1.948a40.452,40.452,0,0,1-4.257,13.924,39.513,39.513,0,0,1-21.185,19.156q-1.376.544-2.859,1.018l-.145-.454Q644.012,408.146,644.751,407.858Z" transform="translate(-591.611 -366.817)" fill="#fff" opacity="0.1"/>
+  <path id="Path_165" data-name="Path 165" d="M431.066,405.4l-1.1,3.456q-1.483-.474-2.859-1.018a39.5,39.5,0,0,1-21.185-19.156,40.429,40.429,0,0,1-4.257-13.924l-.145-1.948h17.423v3.627h-13.38a39.659,39.659,0,0,0,3.659,10.732,35.124,35.124,0,0,0,13.9,14.754A40.327,40.327,0,0,0,431.066,405.4Z" transform="translate(-401.465 -366.802)" fill="${trophyColor}"/>
+  <path id="Path_166" data-name="Path 166" d="M428.34,407.858A39.505,39.505,0,0,1,407.155,388.7a40.428,40.428,0,0,1-4.257-13.924l-.145-1.948H401.26l.145,1.948a40.453,40.453,0,0,0,4.257,13.924,39.513,39.513,0,0,0,21.185,19.156q1.376.544,2.859,1.018l.145-.454Q429.08,408.146,428.34,407.858Z" transform="translate(-401.26 -366.817)" fill="#fff" opacity="0.1"/>
+  <path id="Path_167" data-name="Path 167" d="M535.175,589.327v19.559H494.92V589.327l1.28-1.707c13.045-4.63,15.689-16.7,16.215-21.481a19.656,19.656,0,0,0,.135-1.989h4.978a19.656,19.656,0,0,0,.134,1.989c.536,4.777,3.179,16.856,16.216,21.481Z" transform="translate(-474.936 -517.317)" fill="${trophyColor}"/>
+  <rect id="Rectangle_40" data-name="Rectangle 40" width="40.255" height="2.454" transform="translate(19.984 72.01)" opacity="0.1"/>
+  <path id="Path_168" data-name="Path 168" d="M498.334,587.62c13.045-4.63,15.689-16.7,16.216-21.481a19.638,19.638,0,0,0,.134-1.989H512.55a19.618,19.618,0,0,1-.134,1.989c-.536,4.777-3.179,16.856-16.216,21.481l-1.28,1.707v19.559h2.134V589.327Z" transform="translate(-474.936 -517.317)" fill="#fff" opacity="0.1"/>
+  <path id="Path_169" data-name="Path 169" d="M466.26,372.81h3.61v3.627h-3.29Q466.386,374.645,466.26,372.81Z" transform="translate(-452.391 -366.802)" opacity="0.1"/>
+  <path id="Path_170" data-name="Path 170" d="M510.714,512.736l-1.1,3.456q-1.483-.474-2.859-1.018a38.227,38.227,0,0,1-3.983-5.914,40.325,40.325,0,0,0,7.943,3.476Z" transform="translate(-481.112 -474.138)" opacity="0.1"/>
+  <path id="Path_171" data-name="Path 171" d="M638.51,512.744a40.42,40.42,0,0,0,7.941-3.474,38.367,38.367,0,0,1-3.983,5.917q-1.376.544-2.857,1.016Z" transform="translate(-587.89 -474.146)" opacity="0.1"/>
+  <path id="Path_172" data-name="Path 172" d="M698.938,372.81q-.126,1.835-.32,3.627H695.33V372.81Z" transform="translate(-632.587 -366.802)" opacity="0.1"/>
+  <path id="Path_173" data-name="Path 173" d="M582.207,566.138a13.792,13.792,0,0,1-5.247,0,19.637,19.637,0,0,0,.134-1.989h4.978A19.637,19.637,0,0,0,582.207,566.138Z" transform="translate(-539.472 -517.317)" opacity="0.1"/>
+  <path id="Path_174" data-name="Path 174" d="M468.26,344.65c.092,26.9,11.613,48.647,25.817,48.647s25.723-21.75,25.817-48.647Z" transform="translate(-453.965 -344.65)" fill="${trophyColor}"/>
+  <path id="Path_175" data-name="Path 175" d="M472.847,344.65H468.26c.092,26.9,11.613,48.647,25.817,48.647a13.944,13.944,0,0,0,2.294-.194C483.24,390.909,472.935,370.083,472.847,344.65Z" transform="translate(-453.965 -344.65)" fill="#fff" opacity="0.1"/>
+  <rect id="Rectangle_41" data-name="Rectangle 41" width="27.381" height="7.041" transform="translate(26.421 79.497)" fill="#3f3d56"/>
+  <path id="Path_176" data-name="Path 176" d="M498.37,594.46h26.1v-.96H497.09v7.041h1.28Z" transform="translate(-470.669 -514.003)" fill="#fff" opacity="0.1"/>
+</svg>`;
+
+  }
+
+  const createRewardsPage = function() {
+    showBtnPressed("trophy-btn");
+    var mainContainer = document.querySelector(".main-container");
+    for(var i=0; i < trophyColors.length; i++) {
+      var trophySvg = createTrophySvg(trophyColors[i]);
+      mainContainer.innerHTML+=`
+
+	<div class="award-div">
+          <div class="award-info-holder">
+            <p class="award-title">${trophyTiers[i]}</p>
+          </div>
+          <div class="svg-holder" id="award-${i}">
+            ${trophySvg}
+          </div>        
+        </div>
+      `;
+      if(darkMode) {
+	document.querySelectorAll(".award-div").forEach(
+	  (element) => {
+	    element.setAttribute("style", "background-color: #535461;");
+            element.children[0].children[0].setAttribute("style", "color: white;");
+	  }
+	);
+      }
+      var svgHolderPosition = document.querySelector(`#award-${i}`).getBoundingClientRect();
+      var fromBottom = svgHolderPosition.bottom;
+      var fromLeft = svgHolderPosition.left;
+      document.querySelector(`#award-${i}`).innerHTML+=`<img src="${logoSrc}" class="trophy-logo" />`;
+    }
+     
+  }
+
+  const createSendPage = function() {
+    showBtnPressed('send-btn');
+    var mainContainer = document.querySelector(".main-container");
+    mainContainer.innerHTML+=`
+      <p class="page-title spaced-down">Send or recieve ${assetTicker}</p>
+      <div class="qr-holder">
+	<img src="qrcode.png" alt="" class="qr-code">
+      </div>
+      <div class="sr-row">
+        <div class="sr-div"></div>
+        <div class="sr-div"></div>
+      </div>
+      <div class="recent-txs-div">
+	<p>Transactions</p>
+        <div class="tx-eg">
+
+        </div>
+        <div class="tg-eg">
+
+        </div>
+      </div>
+    `;
+  }
+
+  const createSettingsPage = function() {
+    showBtnPressed('settings-btn');
+    var mainContainer = document.querySelector(".main-container");
+    mainContainer.innerHTML+=`
+      <svg class="settings-svg" id="e476d5f9-30c4-445f-8351-1f846d779dfa" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="845.87074" height="569.98927" viewBox="0 0 845.87074 569.98927"><polygon points="760.114 287.832 752.997 294.857 762.452 319.527 775.643 292.177 797.249 168.007 764.02 167.081 760.114 287.832" fill="#9f616a"/><polygon points="705.966 547.714 687.966 547.714 673.966 388.714 708.966 388.714 705.966 547.714" fill="#9f616a"/><polygon points="773.966 547.714 755.966 547.714 741.966 388.714 776.966 388.714 773.966 547.714" fill="#9f616a"/><path d="M937.09032,733.461l-26.27966-.13983a10.60246,10.60246,0,0,1-5.18583-13.20591h0a10.60249,10.60249,0,0,1,8.18437-6.73544l4.96424-.82737,4.32555-5.50525a8.19029,8.19029,0,0,1,10.758-2.00034c4.14944,2.63357,9.90449,3.511,17,2.92223l5.52291,13.4861c1.09439,7.29591-3.90074,12.10883-11.188,13.25945h0A13.43132,13.43132,0,0,1,937.09032,733.461Z" transform="translate(-177.06463 -165.00536)" fill="#2f2e41"/><path d="M869.09032,733.461l-26.27966-.13983a10.60246,10.60246,0,0,1-5.18583-13.20591h0a10.60249,10.60249,0,0,1,8.18437-6.73544l4.96424-.82737,4.80952-6.12121a7.45937,7.45937,0,0,1,10.01669-1.55131c4.16748,2.7633,10.01393,3.69017,17.25728,3.08916l5.52291,13.4861c1.09439,7.29591-3.90074,12.10883-11.188,13.25945h0A13.43132,13.43132,0,0,1,869.09032,733.461Z" transform="translate(-177.06463 -165.00536)" fill="#2f2e41"/><circle cx="710.9656" cy="55.71363" r="27" fill="#9f616a"/><path d="M927.03023,272.719l-44,3c.15576-14.2391-.46558-27.13579-4-35l31-10C910.3279,243.25667,916.90486,257.50461,927.03023,272.719Z" transform="translate(-177.06463 -165.00536)" fill="#9f616a"/><path d="M954.03023,467.719l-113-9c15.0769-50.26016,10.35876-116.07391-5-165.41577a28.4717,28.4717,0,0,1,18.28887-26.58848L883.03023,255.719l36,4,30.356,15.178a27.71585,27.71585,0,0,1,15.31608,25.30937C953.29231,345.83844,951.91774,404.51285,954.03023,467.719Z" transform="translate(-177.06463 -165.00536)" fill="${primaryColor}"/><path d="M869.03023,344.719l-51-9L822.42,301.69848a42.20258,42.20258,0,0,1,30.84455-35.34011l9.76571-2.63938Z" transform="translate(-177.06463 -165.00536)" fill="${primaryColor}"/><polygon points="661.966 292.714 667.966 300.714 658.966 325.714 645.966 294.714 642.966 168.714 675.966 172.714 661.966 292.714" fill="#9f616a"/><path d="M925.03023,346.719l51-9-4.38975-34.02051a42.20256,42.20256,0,0,0-30.84455-35.34011l-9.7657-2.63938Z" transform="translate(-177.06463 -165.00536)" fill="${primaryColor}"/><path d="M957.03023,558.719l-41.83858,2-12.16142-59-14.76772,55-44.23228,1-8.8417-71.06584a41.09716,41.09716,0,0,1,8.84169-30.93414v0l110,5Z" transform="translate(-177.06463 -165.00536)" fill="#2f2e41"/><path d="M890.53023,250.219l20.19008-3.82345,12.0114-20.51949a27.28013,27.28013,0,0,0-3.19387-31.95038l0,0a27.28016,27.28016,0,0,0-24.2073-8.837l-26.16686,3.73812a17.27884,17.27884,0,0,0-14.64408,19.66833l17.62513,2.99868Z" transform="translate(-177.06463 -165.00536)" fill="#2f2e41"/><ellipse cx="701.4656" cy="63.21363" rx="5" ry="6" fill="#9f616a"/><path d="M303.53023,177.219a11.01245,11.01245,0,0,0-11,11v201a11.01245,11.01245,0,0,0,11,11h5a11.01245,11.01245,0,0,0,11-11v-201a11.01245,11.01245,0,0,0-11-11Z" transform="translate(-177.06463 -165.00536)" fill="#e6e6e6"/><path d="M303.53023,181.719a6.50753,6.50753,0,0,0-6.5,6.5v201a6.50752,6.50752,0,0,0,6.5,6.5h5a6.50753,6.50753,0,0,0,6.5-6.5v-201a6.50753,6.50753,0,0,0-6.5-6.5Z" transform="translate(-177.06463 -165.00536)" fill="#fff"/><path d="M385.53023,177.219a11.01245,11.01245,0,0,0-11,11v201a11.01245,11.01245,0,0,0,11,11h5a11.01245,11.01245,0,0,0,11-11v-201a11.01245,11.01245,0,0,0-11-11Z" transform="translate(-177.06463 -165.00536)" fill="#e6e6e6"/><path d="M385.53023,181.719a6.50753,6.50753,0,0,0-6.5,6.5v201a6.50752,6.50752,0,0,0,6.5,6.5h5a6.50753,6.50753,0,0,0,6.5-6.5v-201a6.50753,6.50753,0,0,0-6.5-6.5Z" transform="translate(-177.06463 -165.00536)" fill="#fff"/><path d="M467.53023,177.219a11.01245,11.01245,0,0,0-11,11v201a11.01245,11.01245,0,0,0,11,11h5a11.01245,11.01245,0,0,0,11-11v-201a11.01245,11.01245,0,0,0-11-11Z" transform="translate(-177.06463 -165.00536)" fill="#e6e6e6"/><path d="M467.53023,181.719a6.50753,6.50753,0,0,0-6.5,6.5v201a6.50752,6.50752,0,0,0,6.5,6.5h5a6.50753,6.50753,0,0,0,6.5-6.5v-201a6.50753,6.50753,0,0,0-6.5-6.5Z" transform="translate(-177.06463 -165.00536)" fill="#fff"/><path d="M549.53023,177.219a11.01245,11.01245,0,0,0-11,11v201a11.01245,11.01245,0,0,0,11,11h5a11.01245,11.01245,0,0,0,11-11v-201a11.01245,11.01245,0,0,0-11-11Z" transform="translate(-177.06463 -165.00536)" fill="#e6e6e6"/><path d="M549.53023,181.719a6.50753,6.50753,0,0,0-6.5,6.5v201a6.50752,6.50752,0,0,0,6.5,6.5h5a6.50753,6.50753,0,0,0,6.5-6.5v-201a6.50753,6.50753,0,0,0-6.5-6.5Z" transform="translate(-177.06463 -165.00536)" fill="#fff"/><path d="M631.53023,177.219a11.01245,11.01245,0,0,0-11,11v201a11.01245,11.01245,0,0,0,11,11h5a11.01245,11.01245,0,0,0,11-11v-201a11.01245,11.01245,0,0,0-11-11Z" transform="translate(-177.06463 -165.00536)" fill="#e6e6e6"/><path d="M631.53023,181.719a6.50753,6.50753,0,0,0-6.5,6.5v201a6.50752,6.50752,0,0,0,6.5,6.5h5a6.50753,6.50753,0,0,0,6.5-6.5v-201a6.50753,6.50753,0,0,0-6.5-6.5Z" transform="translate(-177.06463 -165.00536)" fill="#fff"/><path d="M322.2878,242.2493H290.77265a10.25379,10.25379,0,0,1-10.24242-10.24243v-1.57576a10.25379,10.25379,0,0,1,10.24242-10.24242H322.2878a10.25379,10.25379,0,0,1,10.24243,10.24242v1.57576A10.25379,10.25379,0,0,1,322.2878,242.2493Z" transform="translate(-177.06463 -165.00536)" fill="${primaryColor}"/><path d="M406.2878,275.2493H374.77265a10.25379,10.25379,0,0,1-10.24242-10.24243v-1.57576a10.25379,10.25379,0,0,1,10.24242-10.24242H406.2878a10.25379,10.25379,0,0,1,10.24243,10.24242v1.57576A10.25379,10.25379,0,0,1,406.2878,275.2493Z" transform="translate(-177.06463 -165.00536)" fill="${primaryColor}"/><path d="M486.2878,340.2493H454.77265a10.25379,10.25379,0,0,1-10.24242-10.24243v-1.57576a10.25379,10.25379,0,0,1,10.24242-10.24242H486.2878a10.25379,10.25379,0,0,1,10.24243,10.24242v1.57576A10.25379,10.25379,0,0,1,486.2878,340.2493Z" transform="translate(-177.06463 -165.00536)" fill="${primaryColor}"/><path d="M568.2878,222.2493H536.77265a10.25379,10.25379,0,0,1-10.24242-10.24243v-1.57576a10.25379,10.25379,0,0,1,10.24242-10.24242H568.2878a10.25379,10.25379,0,0,1,10.24243,10.24242v1.57576A10.25379,10.25379,0,0,1,568.2878,222.2493Z" transform="translate(-177.06463 -165.00536)" fill="${primaryColor}"/><path d="M650.2878,300.2493H618.77265a10.25379,10.25379,0,0,1-10.24242-10.24243v-1.57576a10.25379,10.25379,0,0,1,10.24242-10.24242H650.2878a10.25379,10.25379,0,0,1,10.24243,10.24242v1.57576A10.25379,10.25379,0,0,1,650.2878,300.2493Z" transform="translate(-177.06463 -165.00536)" fill="${primaryColor}"/><polygon points="845.475 569.989 578.074 569.989 578.074 567.804 845.871 567.804 845.475 569.989" fill="#3f3d56"/><circle cx="129.4656" cy="275.21363" r="13" fill="#e6e6e6"/><circle cx="211.4656" cy="275.21363" r="13" fill="#e6e6e6"/><circle cx="293.4656" cy="275.21363" r="13" fill="#e6e6e6"/><circle cx="375.4656" cy="275.21363" r="13" fill="#e6e6e6"/><circle cx="457.4656" cy="275.21363" r="13" fill="#e6e6e6"/><path d="M205.86092,165.00536a28.79631,28.79631,0,1,0,28.79632,28.79629A28.79629,28.79629,0,0,0,205.86092,165.00536Zm0,53.33839a24.54208,24.54208,0,1,1,24.5421-24.5421A24.54208,24.54208,0,0,1,205.86092,218.34375Z" transform="translate(-177.06463 -165.00536)" fill="#e6e6e6"/><path d="M204.26992,203.64975a1.51846,1.51846,0,0,1-1.07424-.44513L194.99111,195a1.5192,1.5192,0,0,1,2.14848-2.14847l6.95228,6.95228,12.32319-16.80442a1.51945,1.51945,0,0,1,2.45057,1.79712l-13.37042,18.23239a1.52072,1.52072,0,0,1-1.10955.61665C204.34708,203.64856,204.3082,203.64975,204.26992,203.64975Z" transform="translate(-177.06463 -165.00536)" fill="${primaryColor}"/></svg>
+    <p class="page-title">Settings</p>
+    <div class="settings-buttons">
+      <div class="settings-div-button" style="background-color: ${secondaryColor};">
+	<p>Account Settings</p>
+      </div>
+      <div class="settings-div-button" style="background-color: ${secondaryColor};">
+        <p>Enable 2FA</p>
+      </div>
+      <div class="settings-div-button" style="background-color: ${secondaryColor};">
+        <p>Set Pin</p>
+      </div>
+    </div>
+
+    `;
+  }
+
+  const createReferralPage = function() {
+    showBtnPressed("gift-btn");
+    var mainContainer = document.querySelector(".main-container");
+    mainContainer.innerHTML+=`
+      <svg class="referral-svg"id="683d3690-e1ab-45db-97b8-9484a1649262" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="839.2" height="727.08" viewBox="0 0 839.2 727.08"><defs><linearGradient id="89bbdcf5-814f-445d-9d3e-b835a9e3988b" x1="484.88" y1="578.23" x2="600.81" y2="578.23" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="gray" stop-opacity="0.25"/><stop offset="0.54" stop-color="gray" stop-opacity="0.12"/><stop offset="1" stop-color="gray" stop-opacity="0.1"/></linearGradient><linearGradient id="1a6f3992-5825-4187-85b9-fb55ca803b83" x1="615.75" y1="530.72" x2="651.5" y2="530.72" xlink:href="#89bbdcf5-814f-445d-9d3e-b835a9e3988b"/><linearGradient id="573de093-6af1-4ab3-932c-9e7f72f49645" x1="745.48" y1="595.56" x2="780.02" y2="595.56" xlink:href="#89bbdcf5-814f-445d-9d3e-b835a9e3988b"/><linearGradient id="acf24d19-87bc-4cad-9346-f74a977c4433" x1="634.32" y1="509.85" x2="634.32" y2="96.02" xlink:href="#89bbdcf5-814f-445d-9d3e-b835a9e3988b"/><linearGradient id="6f986e28-ee02-4c37-906f-8450bb16da28" x1="637.11" y1="586.77" x2="637.11" y2="513.3" xlink:href="#89bbdcf5-814f-445d-9d3e-b835a9e3988b"/><linearGradient id="96b175d5-5e64-4663-918e-24aaa3155285" x1="454.92" y1="727.08" x2="454.92" y2="487.86" xlink:href="#89bbdcf5-814f-445d-9d3e-b835a9e3988b"/></defs><title>happy birthday</title><g opacity="0.5"><rect x="124.18" y="129.51" width="3.33" height="18.87" fill="#47e6b1"/><rect x="304.58" y="215.97" width="3.33" height="18.87" transform="translate(351.25 -167.3) rotate(90)" fill="#47e6b1"/></g><g opacity="0.5"><rect x="242.55" y="540.19" width="3.33" height="18.87" fill="#47e6b1"/><rect x="422.95" y="626.65" width="3.33" height="18.87" transform="translate(880.29 125.01) rotate(90)" fill="#47e6b1"/></g><g opacity="0.5"><rect x="76.86" y="321" width="3.33" height="18.87" fill="#47e6b1"/><rect x="257.26" y="407.46" width="3.33" height="18.87" transform="translate(495.42 71.51) rotate(90)" fill="#47e6b1"/></g><g opacity="0.5"><rect x="659.86" width="3.33" height="18.87" fill="#47e6b1"/><rect x="840.26" y="86.46" width="3.33" height="18.87" transform="translate(757.42 -832.49) rotate(90)" fill="#47e6b1"/></g><g opacity="0.5"><rect x="97.97" y="46.93" width="3.33" height="18.87" fill="#47e6b1"/><rect x="278.37" y="133.39" width="3.33" height="18.87" transform="translate(242.45 -223.67) rotate(90)" fill="#47e6b1"/></g><path d="M345.5,559.31a4.08,4.08,0,0,1-2.27-4.93,2,2,0,0,0,.09-.45h0a2,2,0,0,0-3.67-1.36h0a2,2,0,0,0-.23.4,4.08,4.08,0,0,1-4.93,2.27,2,2,0,0,0-.45-.09h0a2,2,0,0,0-1.36,3.67h0a2,2,0,0,0,.4.23,4.08,4.08,0,0,1,2.27,4.93,2,2,0,0,0-.09.45h0a2,2,0,0,0,3.67,1.36h0a2,2,0,0,0,.23-.4,4.08,4.08,0,0,1,4.93-2.27,2,2,0,0,0,.45.09h0a2,2,0,0,0,1.36-3.67h0A2,2,0,0,0,345.5,559.31Z" transform="translate(-180.4 -86.46)" fill="#4d8af0" opacity="0.5"/><path d="M329,738.66a4.08,4.08,0,0,1-2.27-4.93,2,2,0,0,0,.09-.45h0a2,2,0,0,0-3.67-1.36h0a2,2,0,0,0-.23.4A4.08,4.08,0,0,1,318,734.6a2,2,0,0,0-.45-.09h0a2,2,0,0,0-1.36,3.67h0a2,2,0,0,0,.4.23,4.08,4.08,0,0,1,2.27,4.93,2,2,0,0,0-.09.45h0a2,2,0,0,0,3.67,1.36h0a2,2,0,0,0,.23-.4,4.08,4.08,0,0,1,4.93-2.27,2,2,0,0,0,.45.09h0a2,2,0,0,0,1.36-3.67h0A2,2,0,0,0,329,738.66Z" transform="translate(-180.4 -86.46)" fill="#4d8af0" opacity="0.5"/><path d="M936,341.66a4.08,4.08,0,0,1-2.27-4.93,2,2,0,0,0,.09-.45h0a2,2,0,0,0-3.67-1.36h0a2,2,0,0,0-.23.4A4.08,4.08,0,0,1,925,337.6a2,2,0,0,0-.45-.09h0a2,2,0,0,0-1.36,3.67h0a2,2,0,0,0,.4.23,4.08,4.08,0,0,1,2.27,4.93,2,2,0,0,0-.09.45h0a2,2,0,0,0,3.67,1.36h0a2,2,0,0,0,.23-.4,4.08,4.08,0,0,1,4.93-2.27,2,2,0,0,0,.45.09h0a2,2,0,0,0,1.36-3.67h0A2,2,0,0,0,936,341.66Z" transform="translate(-180.4 -86.46)" fill="#4d8af0" opacity="0.5"/><path d="M908.53,531a4.08,4.08,0,0,1-2.27-4.93,2,2,0,0,0,.09-.45h0a2,2,0,0,0-3.67-1.36h0a2,2,0,0,0-.23.4,4.08,4.08,0,0,1-4.93,2.27,2,2,0,0,0-.45-.09h0a2,2,0,0,0-1.36,3.67h0a2,2,0,0,0,.4.23,4.08,4.08,0,0,1,2.27,4.93,2,2,0,0,0-.09.45h0a2,2,0,0,0,3.67,1.36h0a2,2,0,0,0,.23-.4,4.08,4.08,0,0,1,4.93-2.27,2,2,0,0,0,.45.09h0a2,2,0,0,0,1.36-3.67h0A2,2,0,0,0,908.53,531Z" transform="translate(-180.4 -86.46)" fill="#4d8af0" opacity="0.5"/><path d="M929,153.67a4.08,4.08,0,0,1-2.27-4.93,2,2,0,0,0,.09-.45h0a2,2,0,0,0-3.67-1.36h0a2,2,0,0,0-.23.4,4.08,4.08,0,0,1-4.93,2.27,2,2,0,0,0-.45-.09h0a2,2,0,0,0-1.36,3.67h0a2,2,0,0,0,.4.23,4.08,4.08,0,0,1,2.27,4.93,2,2,0,0,0-.09.45h0a2,2,0,0,0,3.67,1.36h0a2,2,0,0,0,.23-.4,4.08,4.08,0,0,1,4.93-2.27,2,2,0,0,0,.45.09h0a2,2,0,0,0,1.36-3.67h0A2,2,0,0,0,929,153.67Z" transform="translate(-180.4 -86.46)" fill="#4d8af0" opacity="0.5"/><path d="M993.22,645.72a4.08,4.08,0,0,1-2.27-4.93,2,2,0,0,0,.09-.45h0a2,2,0,0,0-3.67-1.36h0a2,2,0,0,0-.23.4,4.08,4.08,0,0,1-4.93,2.27,2,2,0,0,0-.45-.09h0a2,2,0,0,0-1.36,3.67h0a2,2,0,0,0,.4.23,4.08,4.08,0,0,1,2.27,4.93,2,2,0,0,0-.09.45h0a2,2,0,0,0,3.67,1.36h0a2,2,0,0,0,.23-.4,4.08,4.08,0,0,1,4.93-2.27,2,2,0,0,0,.45.09h0a2,2,0,0,0,1.36-3.67h0A2,2,0,0,0,993.22,645.72Z" transform="translate(-180.4 -86.46)" fill="#4d8af0" opacity="0.5"/><circle cx="6.66" cy="257.78" r="6.66" fill="${thirdColor}" opacity="0.5"/><circle cx="749.83" cy="146.09" r="6.66" fill="${thirdColor}" opacity="0.5"/><circle cx="446.92" cy="395.96" r="7.5" fill="${thirdColor}" opacity="0.5"/><circle cx="446.92" cy="395.96" r="7.5" fill="${thirdColor}" opacity="0.5"/><circle cx="832.55" cy="346.34" r="6.66" fill="${thirdColor}" opacity="0.5"/><circle cx="294.17" cy="47.27" r="7.5" fill="#47e6b1" opacity="0.5"/><circle cx="721.49" cy="621.41" r="6.66" fill="${thirdColor}" opacity="0.5"/><path d="M487.1,468c-3.94,12.79,2,27.91,13.53,34.64,4.84,2.82,10.41,4.24,15.1,7.3,10.19,6.64,14.21,19.35,17.52,31.05,3.8,13.45,7.61,27.67,4.13,41.2-2.22,8.63-7.27,16.26-10.14,24.7a51.54,51.54,0,0,0-2.45,22c.42,3.94,1.4,8,4.1,10.94,3.9,4.2,10.18,4.83,15.82,5.84a76.78,76.78,0,0,1,55.2,42.74" transform="translate(-180.4 -86.46)" fill="none" stroke-miterlimit="10" stroke-width="2" stroke="url(#89bbdcf5-814f-445d-9d3e-b835a9e3988b)"/><path d="M488.31,468c-3.94,12.79,2,27.91,13.53,34.64,4.84,2.82,10.41,4.24,15.1,7.3,10.19,6.64,14.21,19.35,17.52,31.05,3.8,13.45,7.61,27.67,4.13,41.2-2.22,8.63-7.27,16.26-10.14,24.7a51.54,51.54,0,0,0-2.45,22c.42,3.94,1.4,8,4.1,10.94,3.9,4.2,10.18,4.83,15.82,5.84a76.78,76.78,0,0,1,55.2,42.74" transform="translate(-180.4 -86.46)" fill="none" stroke="#535461" stroke-miterlimit="10" stroke-width="2"/><path d="M637.45,372.4c-9.72,13.55-19.81,28.12-20.64,44.78-1.27,25.59,19.2,46.52,28.34,70.46a83.74,83.74,0,0,1-2.81,65.5c-4.46,9.22-10.82,18.38-10,28.59.47,6.23,3.59,11.9,6.1,17.63a99.4,99.4,0,0,1-5.77,89.75" transform="translate(-180.4 -86.46)" fill="none" stroke-miterlimit="10" stroke-width="2" stroke="url(#1a6f3992-5825-4187-85b9-fb55ca803b83)"/><path d="M638.65,372.4C628.94,386,618.85,400.53,618,417.18c-1.27,25.59,19.2,46.52,28.34,70.46a83.74,83.74,0,0,1-2.81,65.5c-4.46,9.22-10.82,18.38-10,28.59.47,6.23,3.59,11.9,6.1,17.63a99.4,99.4,0,0,1-5.77,89.75" transform="translate(-180.4 -86.46)" fill="none" stroke="#535461" stroke-miterlimit="10" stroke-width="2"/><path d="M773.83,494.28l4.7,38.31c.62,5.09,1.15,10.64-1.58,15-2.59,4.11-7.45,6.07-11.23,9.11-12.41,10-11.28,29.11-7,44.45s10.44,31.82,4.49,46.58c-2.46,6.09-6.8,11.22-10,16.94a51.87,51.87,0,0,0-6.2,32.18" transform="translate(-180.4 -86.46)" fill="none" stroke-miterlimit="10" stroke-width="2" stroke="url(#573de093-6af1-4ab3-932c-9e7f72f49645)"/><path d="M775,494.28l4.7,38.31c.62,5.09,1.15,10.64-1.58,15-2.59,4.11-7.45,6.07-11.23,9.11-12.41,10-11.28,29.11-7,44.45s10.44,31.82,4.49,46.58c-2.46,6.09-6.8,11.22-10,16.94a51.87,51.87,0,0,0-6.2,32.18" transform="translate(-180.4 -86.46)" fill="none" stroke="#535461" stroke-miterlimit="10" stroke-width="2"/><g opacity="0.7"><path d="M895.7,336.82A113.6,113.6,0,0,0,747,228.83a136.45,136.45,0,0,0,1.45-19.27,113.53,113.53,0,0,0-226.78-8.14,113.6,113.6,0,0,0-148.76,108c0,57,42,138,96.65,152.35l8.51,4.86-4.62,15.83h27.36l-5.94-15.85,8.47-4.84c42.26-11.09,76.91-62,90.48-110.83a83,83,0,0,0,24.22,11l8.51,4.86L622,382.59h27.36l-5.94-15.85,8.47-4.84a79.21,79.21,0,0,0,18-7.31c7.31,54.78,46.2,121.66,95.41,134.57l8.51,4.86-4.62,15.83h27.36L790.59,494l8.47-4.84C853.75,474.81,895.7,393.78,895.7,336.82Z" transform="translate(-180.4 -86.46)" fill="url(#acf24d19-87bc-4cad-9346-f74a977c4433)"/></g><polygon points="324.76 390.14 298.28 390.14 302.92 374.26 318.8 374.26 324.76 390.14" fill="${thirdColor}"/><path d="M601.12,309.16c0,60.68-49.19,149.57-109.86,149.57s-109.86-88.9-109.86-149.57a109.86,109.86,0,0,1,219.73,0Z" transform="translate(-180.4 -86.46)" fill="${thirdColor}"/><polygon points="318.8 374.92 302.92 374.92 293.65 369.63 328.07 369.63 318.8 374.92" fill="#535461"/><path d="M451.55,223.78s-46.33,25.15-52.95,75.45" transform="translate(-180.4 -86.46)" fill="#fff" opacity="0.1"/><polygon points="468.43 293.56 441.95 293.56 446.59 277.68 462.47 277.68 468.43 293.56" fill="#4d8af0"/><path d="M744.79,212.58c0,60.68-49.19,149.57-109.86,149.57s-109.86-88.9-109.86-149.57a109.86,109.86,0,0,1,219.73,0Z" transform="translate(-180.4 -86.46)" fill="${primaryColor}"/><polygon points="462.47 278.34 446.59 278.34 437.32 273.04 471.74 273.04 462.47 278.34" fill="#535461"/><path d="M595.22,127.2s-46.33,25.15-52.95,75.45" transform="translate(-180.4 -86.46)" fill="#fff" opacity="0.1"/><polygon points="610.89 416.71 584.41 416.71 589.05 400.82 604.93 400.82 610.89 416.71" fill="${secondaryColor}"/><path d="M887.25,335.72c0,60.68-49.19,149.57-109.86,149.57S667.52,396.4,667.52,335.72a109.86,109.86,0,1,1,219.73,0Z" transform="translate(-180.4 -86.46)" fill="${secondaryColor}"/><polygon points="604.93 401.48 589.05 401.48 579.78 396.19 614.2 396.19 604.93 401.48" fill="#535461"/><path d="M737.68,250.34s-46.33,25.15-52.95,75.45" transform="translate(-180.4 -86.46)" fill="#fff" opacity="0.1"/><g opacity="0.5"><path d="M696.81,521.89c-6.37-6.39-15.66-8.93-26.16-7.16-9.82,1.66-19.65,7-27.67,15a32.34,32.34,0,0,0-5.79,7.94,32.41,32.41,0,0,0-5.74-8.23h0C623.57,521.29,613.83,515.8,604,514c-10.46-2-19.79.43-26.28,6.71s-9.15,15.53-7.53,26.05c1.52,9.84,6.7,19.75,14.59,27.88,16.58,17.11,49.67,10.43,51.07,10.13l.41-.09,1.27.29c1.4.32,34.37,7.57,51.24-9.25,8-8,13.37-17.81,15.07-27.63C705.69,537.58,703.18,528.29,696.81,521.89Zm-66.52,53c-8,1.08-27.93,2.54-37.82-7.67-6.36-6.57-10.52-14.41-11.71-22.1-1.08-7,.48-13,4.42-16.78a14.78,14.78,0,0,1,5.39-3.3,22.24,22.24,0,0,1,11.52-.58c7.64,1.43,15.36,5.83,21.72,12.4C633.7,547,631.62,566.92,630.29,574.88Zm63.11-28.61c-1.32,7.66-5.61,15.44-12.09,21.89-10.07,10-30,8.23-37.95,7-1.19-8-2.93-27.89,7.14-37.93,6.48-6.45,14.27-10.72,21.93-12a22.24,22.24,0,0,1,11.51.78,14.78,14.78,0,0,1,5.34,3.4C693.14,533.29,694.6,539.27,693.4,546.27Z" transform="translate(-180.4 -86.46)" fill="url(#6f986e28-ee02-4c37-906f-8450bb16da28)"/></g><path d="M639.1,582.59l-3.15.66c-1.34.28-33,6.67-48.87-9.7-7.54-7.78-12.5-17.26-14-26.68-1.56-10.07,1-18.92,7.2-24.93s15.13-8.29,25.14-6.42c9.37,1.75,18.69,7,26.23,14.79h0c15.86,16.37,8.48,47.82,8.16,49.15ZM592.57,526.1a14.14,14.14,0,0,0-5.16,3.16c-3.76,3.65-5.26,9.35-4.23,16.06,1.14,7.35,5.12,14.86,11.21,21.15,9.47,9.77,28.54,8.37,36.19,7.34,1.27-7.61,3.27-26.63-6.2-36.4h0c-6.09-6.28-13.47-10.5-20.79-11.86A21.28,21.28,0,0,0,592.57,526.1Z" transform="translate(-180.4 -86.46)" fill="${primaryColor}"/><path d="M634.42,582.73l-.7-3.14c-.3-1.34-7.14-32.91,9-49h0c7.68-7.65,17.08-12.74,26.48-14.33,10-1.7,18.93.73,25,6.85s8.5,15,6.77,25c-1.62,9.39-6.74,18.78-14.42,26.43-16.14,16.09-47.69,9.15-49,8.85ZM681.92,527a21.28,21.28,0,0,0-11-.75c-7.34,1.24-14.79,5.33-21,11.5h0c-9.64,9.61-8,28.65-6.83,36.29,7.63,1.16,26.68,2.89,36.31-6.71,6.2-6.18,10.3-13.62,11.57-21,1.15-6.69-.25-12.42-3.95-16.13A14.14,14.14,0,0,0,681.92,527Z" transform="translate(-180.4 -86.46)" fill="${primaryColor}"/><g opacity="0.5"><polygon points="608.43 487.86 301.42 487.86 301.42 549.29 317.37 549.29 317.37 727.08 592.48 727.08 592.48 549.29 608.43 549.29 608.43 487.86" fill="url(#96b175d5-5e64-4663-918e-24aaa3155285)"/></g><rect x="320.85" y="506.43" width="268.15" height="217.63" fill="#535461"/><rect x="429.66" y="545.29" width="50.52" height="178.76" fill="${primaryColor}"/><rect x="320.85" y="494.77" width="268.15" height="54.41" opacity="0.1"/><rect x="305.31" y="490.88" width="299.24" height="54.41" fill="#535461"/><rect x="429.66" y="490.88" width="50.52" height="54.41" fill="${primaryColor}"/></svg>
+      <img class="gift-logo-overlay" src="${logoSrc}"/>
+      <div class="caption-holder">
+	<p class="page-title">Refer a friend</p>
+	<p class="page-title">and be rewarded</p>
+      </div>
+      <div class="referral-description">
+        <p>Receive 10% of your friend’s purchase value in ${assetTicker}</p>
+      </div>
+      <div class="settings-div-button" style="background-color: ${secondaryColor};" onclick="showCopied();">
+	<p>Copy referral link</p>
+      </div>
+
+
+    `;
+  }
+  const showCopied = function() {
+    Swal.fire({
+    title: 'URL Copied',
+    icon: 'success',
+    customClass: 'copied-ref',
+    });
+  }
+</script>
+</html>
