@@ -83,8 +83,8 @@
       margin-top: 3vh;
     }
     .qr-holder {
-      width: 60vw;
-      height: 60vw;
+      width: 48vw;
+      height: 48vw;
       background-color: white;
       display: flex;
       justify-content: center;
@@ -134,11 +134,12 @@
    .referral-svg {
      width: 100vw;
      margin-right: 6vw;
+     margin-top: 7vh;
    }
    .gift-logo-overlay {
      position: absolute;
      z-index: 999;
-     top: 27vh;
+     top: 34vh;
      right: 43vw;
      width: 12vw;
    }
@@ -165,6 +166,12 @@
      height: 5vh;
      border-radius: 13.5%;
      background-color: #535461;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+   }
+   .sr-div > img {
+     height: 51%;
    }
    .sr-row {
      width: 50vw;
@@ -180,13 +187,19 @@
      height: 20vh;
      border-radius: 8.5%;
      margin-top: 6vh;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
    }
    .copied-ref {
      width: 70vw;
      height: 15vh;
      background-color: #242424;
    }
-   .copied-ref > div {
+   .txs-title {
+     color: #8E8E8E;
+     font-size: 2vh;
+     margin-top: 2vh;
    }
   </style>
 </head>
@@ -300,11 +313,15 @@
 	<img src="qrcode.png" alt="" class="qr-code">
       </div>
       <div class="sr-row">
-        <div class="sr-div"></div>
-        <div class="sr-div"></div>
+        <div class="sr-div">
+	  <img src="Icon feather-arrow-up-right.svg" alt=""/>
+        </div>
+        <div class="sr-div">
+	  <img src="Icon feather-arrow-down-right.svg" alt=""/>
+        </div>
       </div>
       <div class="recent-txs-div">
-	<p>Transactions</p>
+	<p class="txs-title">Transactions</p>
         <div class="tx-eg">
 
         </div>
