@@ -1,5 +1,5 @@
 const assetTicker = "iRX";
-const logoSrc = "eg-logo.svg";
+const logoSrc = "https://upload.wikimedia.org/wikipedia/sco/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png";
 const primaryColor = "#6C63FF";   
 const secondaryColor = "#3AD29F";
 const thirdColor = "#F55F44";
