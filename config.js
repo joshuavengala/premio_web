@@ -1,5 +1,5 @@
-const assetTicker = "iRX";
-const logoSrc = "https://upload.wikimedia.org/wikipedia/sco/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png";
+const assetTicker = "MT";
+const logoSrc = "https://i.imgur.com/nAacfdQ.png";
 const primaryColor = "#A3080C";   
 const secondaryColor = "#F5D4B7";
 const thirdColor = "#FFF1E2";
